@@ -4,6 +4,7 @@
   "description": "A set of starter files for a frontend project.",
   "private": true,
   "main": "src/index.js",
+  "repository": "https://github.com/paulio84/webpack-starter",
   "scripts": {
     "clean:dist": "rm -rf dist",
     "start": "webpack-dev-server --config ./config/webpack.dev.js --open",
