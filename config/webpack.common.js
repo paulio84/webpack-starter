@@ -5,6 +5,7 @@ module.exports = {
   plugins: [
     new FaviconsWebpackPlugin({
       logo: './src/assets/images/favicon-32x32.png',
+      mode: 'light',
       cache: true,
       inject: true,
       icons: {
