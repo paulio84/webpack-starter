@@ -1,5 +1,3 @@
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-
 module.exports = {
   entry: './src/js/index.js',
   module: {
