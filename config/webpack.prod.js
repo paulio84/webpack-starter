@@ -23,7 +23,7 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({ filename: '[name].[contentHash].css' }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "./src/pages/index/index.html",
+      template: "./src/index.html",
       minify: {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
