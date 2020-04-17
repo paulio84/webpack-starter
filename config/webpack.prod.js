@@ -35,10 +35,20 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.s[ac]ss$/,
+        test: /\.(s[ac]ss|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
+          { loader: 'css-loader', options: { importLoaders: 2 } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                require('@fullhuman/postcss-purgecss')({ content: ['./src/**/*.html'], fontface: true, keyframe: true }),
+                require('postcss-preset-env')({ stage: 3 })
+              ]
+            }
+          },
           'sass-loader'
         ]
       }

@@ -15,8 +15,7 @@ module.exports = {
             outputPath: 'assets/images'
           }
         }
-      },
-
+      }
     ]
   }
 }

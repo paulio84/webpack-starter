@@ -1,17 +1,13 @@
-const path = require('path');
 const common = require('./webpack.common');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'development',
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, '../dist')
-  },
   devServer: {
     overlay: true,
-    port: 3000
+    port: 3000,
+    writeToDisk: false
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -22,11 +18,21 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.s[ac]ss$/,
+        test: /\.(s[ac]ss|css)$/,
         use: [
           'style-loader',
-          'css-loader',
-          'sass-loader'
+          { loader: 'css-loader', options: { importLoaders: 2, sourceMap: true } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                require('postcss-preset-env')({ stage: 3 }) // includes autoprefixer
+              ],
+              sourceMap: true
+            }
+          },
+          { loader: 'sass-loader', options: { sourceMap: true } }
         ]
       }
     ]
