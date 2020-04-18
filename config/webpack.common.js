@@ -7,6 +7,16 @@ module.exports = {
         use: ['html-loader']
       },
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
+      {
         test: /\.(svg|png|jpe?g|gif)$/,
         use: {
           loader: 'file-loader',
